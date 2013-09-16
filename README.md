@@ -3,7 +3,7 @@ A lightweight & simple jQuery lightbox script by <a href="http://kthornbloom.com
 
 
 ##Demo
-http://kthornbloom.com/smoothbox/demo.html
+<a href="https://kthornbloom.com/smoothbox/demo" target="_blank">http://kthornbloom.com/smoothbox/demo.html</a>
 
 ##Features
 
