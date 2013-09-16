@@ -80,10 +80,10 @@ body, html {
     border-radius: 2px;
 }
 .sb-item-ani {
+    top:400px;
     -webkit-transform:rotate(25deg);
     -moz-transform:rotate(25deg);
     transform:rotate(25deg);
-    top:400px;
     opacity:0;
 }
 .sb-caption {
