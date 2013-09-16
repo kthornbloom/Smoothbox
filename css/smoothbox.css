@@ -1,0 +1,125 @@
+body, html {
+    height:100%;
+    width:100%;
+}
+
+.smoothbox {
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.95);
+    height:100%;
+    width:100%;
+    overflow:hidden;
+}
+.sb-load {
+    background:url('images/load.gif') center no-repeat rgba(0,0,0,.95);
+}
+.smoothbox-table {
+    top:0;
+    height:100%;
+    width:100%;
+    display:table;
+}
+.smoothbox-centering {
+    display:table-cell;
+    vertical-align:middle;
+    top:0;
+    height:100%;
+    width:100%;
+}
+.smoothbox-sizing {
+    display:none;
+    position: relative;
+    margin: 0 auto;
+    padding: 0px;
+    min-width: 150px;
+    max-width: 500px;
+}
+
+.sb-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    border-radius: 2px;
+}
+.sb-items:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.sb-item {
+    width: 100%;
+    top:0;
+    float: left;
+    margin-right: -100%;
+    position: relative;
+    zoom: 1;
+    border-radius: 2px;
+    box-shadow: 0px 4px 10px #000;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition:all .5s ease-out;
+    -moz-transition:all .5s ease-out;
+    transition:all .5s ease-out;
+}
+
+.no-trans {
+    -webkit-transition:none;
+    -moz-transition:none;
+    transition:none;
+}
+
+.sb-item img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+.sb-item-ani {
+    -webkit-transform:rotate(25deg);
+    -moz-transform:rotate(25deg);
+    transform:rotate(25deg);
+    top:400px;
+    opacity:0;
+}
+.sb-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background:rgb(0,0,0);
+    background: rgba(0, 0, 0, 0.9);
+    color: #CCC;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box;
+}
+.sb-nav {
+    position:absolute;
+    bottom:-31px;
+    width:100%;
+    text-align:center;
+    display:none
+}
+
+.sb-prev, .sb-next, .sb-cancel {
+    display: inline-block;
+    background: #FFF;
+    color:#000!important;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 30px;
+    color: #3D3D3D;
+    opacity: 0.2;
+    margin-right: 1px;
+}
+.sb-nav a:hover {
+    opacity:1;
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=0;">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset='utf-8'> 
+<head>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- META ===================================================== --> 
+    <title>Smoothbox Demo</title> 
+    <meta name="description" content="A lightweight and dead simple lightbox script"> 
+
+<!-- Favicon  ========================================== --> 
+	<link rel="icon" href="favicon.ico">
+
+<!-- CSS ====================================================== --> 
+	<link rel="stylesheet" href="css/smoothbox.css">
+	<!-- Demo CSS (don't use) -->
+	<style type="text/css">
+		body, html {
+			padding:0px;
+			margin:0px;
+			background: #eee;
+		}
+		.page{
+			padding: 5px 30px 30px 30px;
+			max-width: 900px;
+			margin: 0 auto;
+			font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+			background: #fff;
+			box-shadow:0px 2px 3px #ccc;
+		}
+		a:link,
+		a:visited {
+			color:#0138B8;
+		}
+		a:hover {
+			color:#175CFF;
+		}
+		pre {
+			background: #333;
+			padding: 10px;
+			overflow: auto;
+			color: #BBB7A9;
+			}
+		#hub {
+			text-decoration: none;
+			color: #0138B8;
+			border: 2px solid #0138B8;
+			padding: 6px 10px;
+			display: inline-block;
+			border-radius: 5px;
+			font-size: 18px;
+		}
+		#hub:hover {
+			background:#0138B8;
+			color:#fff;
+		}
+	</style>
+
+</head>
+<body>
+<br>
+<div class="page">
+<h1>Smoothbox</h1>
+A lightweight & simple jQuery lightbox script by <a href="http://kthornbloom.com">Kevin Thornbloom</a>.
+
+<h2>Demo</h2>
+
+<a class="sb" href="images/1.jpg" title="Hey here's a caption">Image One</a><br>
+<a class="sb" href="images/2.jpg">Image Two</a><br>
+<a class="sb" href="images/3.jpg" title="Whoa, another caption. What are the odds of that happening?">Image Three</a><br>
+<a class="sb" href="images/4.jpg" title="That's all, folks.">Image Four</a>
+
+<h2>Features</h2>
+<ul>
+	<li>Lightweight [1.7Kb]</li>
+	<li>Preloads images</li>
+	<li>Built in gallery for multiple items</li>
+	<li>CSS3 transitions for smoother effects</li>
+	<li>Responsive image sizes</li>
+</ul>
+
+<h2>Usage</h2>
+<ol>
+	<li>Include jQuery, smoothbox.js, and smoothbox.css
+		<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/smoothbox.css&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/smoothbox.min.js&quot;&gt;&lt;/script&gt;
+</pre></code>
+	</li>
+	<li>Add a class of "sb" to any link that you wish to open in smoothbox</li>
+	<li>Want a caption? Add a title attribute to your link
+		<pre><code>&lt;a class=&quot;sb&quot; href=&quot;images/1.jpg&quot; title=&quot;Hey here's a caption&quot;&gt;Image One&lt;/a&gt;</pre></code>
+	</li>
+</ol>
+
+
+
+<h2>Customization</h2>
+To keep things as tidy as possible, there aren't any options related to the javascript. The CSS is, of course, customizable to change colors and other styles.
+
+
+
+
+<h2>Download</h2>
+<a href="#" id="hub">Find me on Github</a>
+</div><br>
+<!-- JS ======================================================= --> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+	<script type="text/javascript" src="js/smoothbox.min.js"></script>
+	
+</body>
+</html>
