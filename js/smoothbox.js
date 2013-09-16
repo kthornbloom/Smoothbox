@@ -12,7 +12,7 @@ $(document).ready(function() {
         var clicked = $(this).index('.sb');
             
         // create smoothbox
-       $('body').append('<div class="smoothbox sb-load"><div class="smoothbox-table"><div class="smoothbox-centering"><div class="smoothbox-sizing"><div class="sb-nav"><a href="#" class="sb-prev">◄</a><a href="#" class="sb-cancel">✖</a><a href="#" class="sb-next">►</a></div><ul class="sb-items"></ul></div></div></div></div>');
+       $('body').append('<div class="smoothbox sb-load"><div class="smoothbox-table"><div class="smoothbox-centering"><div class="smoothbox-sizing"><div class="sb-nav"><a href="#" class="sb-prev" alt="Previous">←</a><a href="#" class="sb-cancel" alt="Close">×</a><a href="#" class="sb-next" alt="Next">→</a></div><ul class="sb-items"></ul></div></div></div></div>');
           
         $.fn.reverse = [].reverse;
         // get each picture, put them in the box
@@ -49,8 +49,9 @@ $(document).ready(function() {
         // animate away
         $('.sb-item:last').addClass('sb-item-ani');
         // after animation, move order & remove class
-        $('.sb-item').eq(-2).addClass('no-trans').fadeIn();
+        
         $(".sb-item:last").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+            $('.sb-item').eq(-2).addClass('no-trans').fadeIn('fast');
             $(this).removeClass('sb-item-ani').prependTo('.sb-items').hide();
             $('.sb-item:last').removeClass('no-trans');
             $('.sb-item').unbind();
@@ -59,9 +60,9 @@ $(document).ready(function() {
 
     $('.sb-prev').live('click', function() {   
         $('.sb-item:last').hide(); 
-        $(".sb-item:first").addClass('sb-item-ani no-trans').appendTo('.sb-items');
+        $(".sb-item:first").addClass('sb-item-ani2 no-trans').appendTo('.sb-items');
         $('.sb-item:last').show().removeClass('no-trans').delay(1).queue(function(next){
-            $('.sb-item:last').removeClass('sb-item-ani');
+            $('.sb-item:last').removeClass('sb-item-ani2');
             next();
         });    
     });
