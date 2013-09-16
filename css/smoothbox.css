@@ -2,7 +2,7 @@ body, html {
     height:100%;
     width:100%;
 }
-
+/* wrapper */
 .smoothbox {
     position: fixed;
     top:0;
@@ -11,9 +11,11 @@ body, html {
     height:100%;
     width:100%;
 }
+/* wrapper after loading */
 .sb-load {
     background:url('images/load.gif') center no-repeat rgba(0,0,0,.9);
 }
+/* vertical centering */
 .smoothbox-table {
     top:0;
     height:100%;
@@ -27,18 +29,17 @@ body, html {
     height:100%;
     width:100%;
 }
+/* horizontal centering & sizing */
 .smoothbox-sizing {
     display:none;
     position: relative;
     margin: 0 auto;
     padding: 0px;
     width: 80%;
-    /* text-align: center; */
 }
-
+/* item wrapper */
 .sb-items {
     margin: 0 auto;
-    max-height: 50%;
     width: auto;
     padding: 0;
     list-style: none;    
@@ -53,7 +54,7 @@ body, html {
     line-height: 0;
     height: 0;
 }
-
+/* items */
 .sb-item {
     left: 0;
     top:0;
@@ -84,19 +85,20 @@ body, html {
     border-radius: 2px;
     position: relative;
 }
+/* forward animation */
 .sb-item-ani {
     top: 400px;
     opacity:0;
     -webkit-transform:scale(.5)rotate(25deg);
-    -moz-transform:rotate(25deg);
-    transform:rotate(25deg);
-    /* opacity:0; */
+    -moz-transform:scale(.5)rotate(25deg);
+    transform:scale(.5)rotate(25deg);
 }
+/* back animation */
 .sb-item-ani2 {
     top:400px;
-    -webkit-transform:scale(.5) rotate(10deg);
-    -moz-transform:rotate(-25deg);
-    transform:rotate(-25deg);
+    -webkit-transform:scale(.5) rotate(25deg);
+    -moz-transform:scale(.5) rotate(25deg);
+    transform:scale(.5) rotate(25deg);
     opacity:0;
 }
 .sb-caption {
@@ -113,6 +115,7 @@ body, html {
     z-index: 1;
     text-align: center;
 }
+/* buttons */
 .sb-nav {
     position:absolute;
     top: 10px;
