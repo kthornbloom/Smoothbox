@@ -1,69 +1,153 @@
-    // ------ TO DO ----------// 
-    // set size based on window?
-    // Animate to different sized images
-    // Fix overlay to be 100% height on scroll
-    // View full image button?
-    // Multiple gallery groups
+/*
+Ken Burns Slideshow
+by Kevin Thornbloom - http://www.kthornbloom.com
+
+Licensed under the Creative Commons Attribution 2.5 License - http://creativecommons.org/licenses/by/2.5/
+- free for use in both personal and commercial projects
+- attribution requires leaving author name, author link, and the license info intact
+*/
 
 $(document).ready(function() {
+  var playTimer = 4000
+  var convertSeconds = (playTimer/1000)-.5
 
-    $('.sb').click(function(event){
-        // which was clicked?
-        var clicked = $(this).index('.sb');
-            
-        // create smoothbox
-       $('body').append('<div class="smoothbox sb-load"><div class="smoothbox-table"><div class="smoothbox-centering"><div class="smoothbox-sizing"><div class="sb-nav"><a href="#" class="sb-prev" alt="Previous">←</a><a href="#" class="sb-cancel" alt="Close">×</a><a href="#" class="sb-next" alt="Next">→</a></div><ul class="sb-items"></ul></div></div></div></div>');
-          
-        $.fn.reverse = [].reverse;
-        // get each picture, put them in the box
-        $('.sb').reverse().each(function() {
-           var href = $(this).attr('href');
-            if ($(this).attr('title')) {
-                var caption = $(this).attr('title');
-                $('.sb-items').append('<div class="sb-item"><div class="sb-caption">'+ caption +'</div><img src="'+ href + '"/></div>');
+  $('.kb-slide').css({
+      'webkitTransition': 'all ' + convertSeconds + 's ease-in-out',
+      'mozTransition': 'all ' + convertSeconds + 's ease-in-out',
+      'transition': 'all ' + convertSeconds + 's ease-in-out'
+  });
+
+  $('.kb-slide:last').css('position','relative');
+  $('.kb-slides').wrap('<div class="kb-slides-wrap"></div>');
+  $('.kb-slides-wrap').append('<div class="kb-caption"></div><a href="#" id="kb-prev">Prev</a><a href="#" id="kb-next">Next</a>');
+   var caption = $('.kb-slide:last').attr('title');
+  $('.kb-caption').html(caption);
+playZoomout();
+  function captionUpdater() {
+      if ($('.kb-slide:eq(-2)').attr('title')) {
+            var caption = $('.kb-slide:eq(-2)').attr('title');
+                  $('.kb-caption').html(caption).show();
             }   
             else {
-                  $('.sb-items').append('<div class="sb-item"><img src="'+ href + '"/></div>');
-                
-           }
-        });
-        
-        $('.sb-item').slice(0,-(clicked)).appendTo('.sb-items');
-        $('.sb-item').not(':last').hide();
-        $('.sb-item img:last').load(function() { 
-            $('.smoothbox-sizing').fadeIn('slow', function() {
-                $('.sb-nav').fadeIn();
-                $('.sb-load').removeClass('sb-load');
-            });
-        });
-        event.preventDefault();
-    });
+                  $('.kb-caption').empty().hide();
+      }
+  }
 
-    $('.sb-cancel').live('click', function() {
-        $('.smoothbox').fadeOut('slow', function() {
-            $('.smoothbox').remove();
+ function playZoomin() {
+    captionUpdater();
+  $('.kb-slide:last').addClass('notrans').fadeOut( "slow", function() {
+      $(this).prependTo('.kb-slides').removeClass('notrans').css({
+          'webkitTransform':'scale(1) rotate(0deg)',
+          'msTransform':'scale(1) rotate(0deg)',
+          'transform':'scale(1) rotate(0deg)'
+      }).show();
+      $('.kb-slide:last').css({
+          'webkitTransform':'scale(1.2)  rotate(2deg)',
+          'msTransform':'scale(1.2)  rotate(2deg)',
+          'transform':'scale(1.2)  rotate(2deg)'
+      });
+      
+  });    
+}
+
+function playZoomout() {
+    captionUpdater();
+    $('.kb-slide:eq(-2)').addClass('notrans').css({
+        'webkitTransform':'scale(1.2) rotate(2deg)',
+        'msTransform': 'scale(1.2) rotate(2deg)',
+        'transform': 'scale(1.2) rotate(2deg)'
+    });
+    $('.kb-slide:last').addClass('notrans').fadeOut( "slow", function() {
+        $(this).prependTo('.kb-slides').removeClass('notrans').css({
+          'webkitTransform':'scale(1) rotate(0deg)',
+          'msTransform':'scale(1) rotate(0deg)',
+          'transform':'scale(1) rotate(0deg)'
+      }).show();
+        $('.kb-slide:last').removeClass('notrans').css({
+            'webkitTransform':'scale(1) rotate(0deg)',
+            'msTransform':'scale(1) rotate(0deg)',
+            'transform':'scale(1) rotate(0deg)'
         });
-    });
+  });    
+}
 
-    $('.sb-next').live('click', function() {
-        // animate away
-        $('.sb-item:last').addClass('sb-item-ani');
-        // after animation, move order & remove class
-        
-        $(".sb-item:last").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
-            $('.sb-item').eq(-2).addClass('no-trans').fadeIn('fast');
-            $(this).removeClass('sb-item-ani').prependTo('.sb-items').hide();
-            $('.sb-item:last').removeClass('no-trans');
-            $('.sb-item').unbind();
-        });    
+function playPanright() {
+    captionUpdater();
+    $('.kb-slide:eq(-2)').addClass('notrans').css({
+      'webkitTransform': 'scale(1.3) translate(-10%, 0)',
+      'msTransform': 'scale(1.3) translate(-10%, 0)',
+      'transform': 'scale(1.3) translate(-10%, 0)'
     });
+    $('.kb-slide:last').addClass('notrans').fadeOut( "slow", function() {
+        $(this).prependTo('.kb-slides').removeClass('notrans').css({
+          'webkitTransform':'scale(1) rotate(0deg)',
+          'msTransform':'scale(1) rotate(0deg)',
+          'transform':'scale(1) rotate(0deg)'
+      }).show();
+        $('.kb-slide:last').removeClass('notrans').css({
+            'webkitTransform':'scale(1.3) translate(0,0)',
+            'msTransform':'scale(1.3) translate(0,0)',
+            'transform':'scale(1.3) translate(0,0)'
+        });
+  });    
+}
 
-    $('.sb-prev').live('click', function() {   
-        $('.sb-item:last').hide(); 
-        $(".sb-item:first").addClass('sb-item-ani2 no-trans').appendTo('.sb-items');
-        $('.sb-item:last').show().removeClass('no-trans').delay(1).queue(function(next){
-            $('.sb-item:last').removeClass('sb-item-ani2');
-            next();
-        });    
+function playPanleft() {
+    captionUpdater();
+    $('.kb-slide:eq(-2)').addClass('notrans').css({
+      'webkitTransform': 'scale(1.3) translate(10%, 0)',
+      'msTransform': 'scale(1.3) translate(10%, 0)',
+      'transform': 'scale(1.3) translate(10%, 0)'
     });
+    $('.kb-slide:last').addClass('notrans').fadeOut( "slow", function() {
+        $(this).prependTo('.kb-slides').removeClass('notrans').css({
+          'webkitTransform':'scale(1) rotate(0deg)',
+          'msTransform':'scale(1) rotate(0deg)',
+          'transform':'scale(1) rotate(0deg)'
+      }).show();
+        $('.kb-slide:last').removeClass('notrans').css({
+            'webkitTransform':'scale(1.3) translate(0,0)',
+            'msTransform':'scale(1.3) translate(0,0)',
+            'transform':'scale(1.3) translate(0,0)'
+        });
+  });    
+}
+
+  var fns = [playZoomout, playZoomin, playPanright, playPanleft];
+  var fn = function () {
+      fns[Math.floor(Math.random() * fns.length)]();
+  }
+
+  var myInterval = setInterval(fn, playTimer);
+
+  $('#kb-prev, #kb-next').hover(function(ev){
+      clearInterval(myInterval);
+  }, function(ev){
+      myInterval = setInterval(fn, playTimer);
+  });
+
+  $('#kb-next').click(function(event){
+      captionUpdater();
+      $('.kb-slide:last').addClass('notrans').fadeOut( "slow", function() {
+          $(this).prependTo('.kb-slides').removeClass('notrans').css({
+            'webkitTransform':'scale(1) rotate(0deg)',
+            'msTransform':'scale(1) rotate(0deg)',
+            'transform':'scale(1) rotate(0deg)'
+        }).show();
+      });
+      event.preventDefault();
+  });
+
+  $('#kb-prev').click(function(event){
+      if ($('.kb-slide:first').attr('title')) {
+          var caption = $('.kb-slide:first').attr('title');
+          $('.kb-caption').html(caption).show();
+      }   
+      else {
+          $('.kb-caption').empty().hide();
+      }
+      $('.kb-slide:first').hide().addClass('notrans').appendTo('.kb-slides').fadeIn();
+  	  });
+      event.preventDefault();
+});
 });
