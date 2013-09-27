@@ -1,9 +1,11 @@
-    // ------ TO DO ----------// 
-    // set size based on window?
-    // Animate to different sized images
-    // Fix overlay to be 100% height on scroll
-    // View full image button?
-    // Multiple gallery groups
+/*
+Ken Burns Slideshow
+by Kevin Thornbloom - http://www.kthornbloom.com
+
+Licensed under the Creative Commons Attribution 2.5 License - http://creativecommons.org/licenses/by/2.5/
+- free for use in both personal and commercial projects
+- attribution requires leaving author name, author link, and the license info intact
+*/
 
 $(document).ready(function() {
 
@@ -39,13 +41,14 @@ $(document).ready(function() {
         event.preventDefault();
     });
 
-    $('.sb-cancel').live('click', function() {
+    $('.sb-cancel').live('click', function(event) {
         $('.smoothbox').fadeOut('slow', function() {
             $('.smoothbox').remove();
         });
+        event.preventDefault();
     });
 
-    $('.sb-next').live('click', function() {
+    $('.sb-next').live('click', function(event) {
         
         if(jQuery.browser.version.substring(0, 2) == "8.") {
             $('.sb-item').eq(-2).fadeIn('fast');
@@ -61,9 +64,10 @@ $(document).ready(function() {
                 $('.sb-item').unbind();
             }); 
         }
+        event.preventDefault();
     });
 
-    $('.sb-prev').live('click', function() {   
+    $('.sb-prev').live('click', function(event) {   
         if(jQuery.browser.version.substring(0, 2) == "8.") {
             $('.sb-item:first').appendTo('.sb-items').fadeIn();
         } else {
@@ -74,5 +78,6 @@ $(document).ready(function() {
                 next();
             });    
         }
+        event.preventDefault();
     });
 });
