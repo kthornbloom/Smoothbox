@@ -19,6 +19,13 @@ A lightweight & simple jQuery lightbox script by <a href="http://kthornbloom.com
 - Add a class of "sb" to any link that you wish to open in smoothbox
 - Want a caption? Add a title attribute to your link
 
+##Browser Support
+
+- Full support: Chrome, Safari, Firefox (16+), Internet Explorer (9+)
+- Supported without transitions: Internet Explorer 8, Firefox (-16)
+- Unsupported: Internet Explorer 7 & down
+
+
 ##Licensing
 Free to use and modify personally or commercially. Not for resale. 
 
