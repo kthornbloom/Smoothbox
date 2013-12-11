@@ -51,10 +51,6 @@ $(document).ready(function() {
     $(document).on('click', ".sb-next-on", function(event){
         $(this).removeClass('sb-next-on');
         
-        if(jQuery.browser.version.substring(0, 2) == "8.") {
-            $('.sb-item').eq(-2).fadeIn('fast');
-            $('.sb-item:last').fadeOut().removeClass('sb-item-ani').prependTo('.sb-items');
-        } else {
             $('.sb-item:last').addClass('sb-item-ani');
         // after animation, move order & remove class
         
@@ -65,23 +61,19 @@ $(document).ready(function() {
                 $('.sb-next').addClass('sb-next-on');
                 $('.sb-item').unbind();
             }); 
-        }
+        
         event.preventDefault();
     });
 
     $(document).on('click', ".sb-prev-on", function(event){  
         $(this).removeClass('sb-prev-on');
-        if(jQuery.browser.version.substring(0, 2) == "8.") {
-            $('.sb-item:first').appendTo('.sb-items').fadeIn();
-        } else {
             $('.sb-item:last').hide(); 
             $(".sb-item:first").addClass('sb-item-ani2 no-trans').appendTo('.sb-items');
             $('.sb-item:last').show().removeClass('no-trans').delay(1).queue(function(next){
                 $('.sb-item:last').removeClass('sb-item-ani2');
                 next();
             });
-            $(this).addClass('sb-prev-on');    
-        }
+            $(this).addClass('sb-prev-on');           
         event.preventDefault();
     });
 });
