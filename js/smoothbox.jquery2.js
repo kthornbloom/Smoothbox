@@ -14,7 +14,7 @@ $(document).ready(function() {
         var clicked = $(this).index('.sb');
             
         // create smoothbox
-       $('body').append('<div class="smoothbox sb-load"><div class="smoothbox-table"><div class="smoothbox-centering"><div class="smoothbox-sizing"><div class="sb-nav"><a href="#" class="sb-prev sb-prev-on" alt="Previous">←</a><a href="#" class="sb-cancel" alt="Close">×</a><a href="#" class="sb-next sb-next-on" alt="Next">→</a></div><ul class="sb-items"></ul></div></div></div></div>');
+       $('body').append('<div class="smoothbox sb-load"><div class="smoothbox-table"><div class="smoothbox-centering"><div class="smoothbox-sizing"><div class="sb-nav"><a href="#" class="sb-prev sb-prev-on" alt="Previous">&larr;</a><a href="#" class="sb-cancel" alt="Close">&times;</a><a href="#" class="sb-next sb-next-on" alt="Next">&rarr;</a></div><ul class="sb-items"></ul></div></div></div></div>');
           
         $.fn.reverse = [].reverse;
         // get each picture, put them in the box
