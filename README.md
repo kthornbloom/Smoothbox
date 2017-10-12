@@ -1,5 +1,5 @@
 #Smoothbox
-A lightweight & simple jQuery lightbox script by <a href="http://kthornbloom.com">Kevin Thornbloom</a>.
+A lightweight & simple jQuery lightbox script
 
 
 ##Demo
